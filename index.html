@@ -9,12 +9,16 @@
     <link rel="stylesheet" href="asstes/css/style.css">
     <link rel="stylesheet" href="asstes/css/reset.css">
     <script src="asstes/javascript/app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
 </head>
 <body>
     <h1>Employee Data Management</h1>
     <h3>A Comprehensive Directory of Employee Billable Hours</h3>
 
+    <div class = "container">
 
+    <div class = "tableInput">
+        
     <table>
             <tr>
               <th>Employee Name</th>
@@ -30,12 +34,25 @@
             <tr>
             
             </tr>
-          </table>
+    </table>
+    </div>
+         
 
+    <div class = "formInput">
 
+    <form>
+        Employee Name<br>
+        <input type="text" id = "employeeNameInput" name="employeename"><br>
+        Role<br>
+        <input type="text" id = "roleInput" name="role"><br>
+        Start Date<br>
+        <input type = "date" id = "startDateInput" name="statdate"><br>
+        Monthly Rate<br>
+        <input type="number" id = "monthlyRateInput" name="monthlyrate"><br>
+        </form>
 
- 
-    
+    </div>
+    </div>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 </body>
 </html>
