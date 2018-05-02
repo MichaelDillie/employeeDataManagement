@@ -18,6 +18,7 @@ $(document).ready(function () {
     var startDateInput;
     var monthlyRateInput;
     var workedMonths;
+    var totalBilled;
 
     var table = $("#tableID");
     var empty = $(".empty");
@@ -25,7 +26,6 @@ $(document).ready(function () {
     function generateToTable() {
         database.ref().on("child_added", function (snapshot) {
             var snap = snapshot.val();
-            console.log(workedMonths);
             calcMonthsWorked(snap.startDate);
             table.append("<tr class='empty'><td>" + snap.employeeName + "</td><td>" + snap.role + "</td><td>" + snap.startDate + "</td><td>" + "$" + snap.monthlyRate + "</td><td>" + snap.monthsWorked + "</td><td>" + "$" + snap.totalBill + "</td></tr>")
         });
@@ -44,6 +44,10 @@ $(document).ready(function () {
         workedMonths = Math.floor(Math.abs(monthsWorkedFunc));
     }
 
+    function calcTotalBill(months, rate) {
+        totalBilled = months * rate;
+    }
+
 
     $("#buttonInput").on("click", function (e) {
         e.preventDefault();
@@ -54,6 +58,7 @@ $(document).ready(function () {
         monthlyRateInput = $("#monthlyRateInput").val().trim();
 
         calcMonthsWorked(startDateInput);
+        calcTotalBill(workedMonths, monthlyRateInput);
 
         console.log(workedMonths);
 
@@ -68,7 +73,7 @@ $(document).ready(function () {
             startDate: startDateInput,
             monthlyRate: monthlyRateInput,
             monthsWorked: workedMonths,
-            totalBill: 123456789,
+            totalBill: totalBilled,
             dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
         // Clears input fields
