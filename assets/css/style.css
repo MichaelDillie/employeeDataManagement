@@ -4,6 +4,11 @@ body {
     background-color: rgb(250, 253, 255);
 }
 
+h1, h3 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+}
+
 .container {
     width: 960px;
     margin: auto;
@@ -35,9 +40,14 @@ table {
     border-right: 3px solid rgb(55, 57, 59);
 }
 
+styleform {
+    width: 170px;
+    border-radius: 7px;
+    margin: 0px;
+}
+
 input {
     width: 170px;
-    margin: 10px;
     border-radius: 7px;
 }
 
