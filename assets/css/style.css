@@ -9,6 +9,12 @@ h1, h3 {
     font-weight: 500;
 }
 
+.main-container {
+    width:1160px;
+    margin: auto;
+    margin-top: 5px;
+}
+
 .container {
     width: 960px;
     margin: auto;
@@ -97,7 +103,7 @@ footer {
     background-color:  rgb(55, 57, 59);
     border-top-left-radius: 30px;
     border-radius: 30px;
-    top: 60px;
-    margin-left: 1380px;
+    top: 110px;
+    margin-left: 1110px;
     font-size: 2.3em;
 }
