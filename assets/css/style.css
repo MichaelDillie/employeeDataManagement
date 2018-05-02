@@ -1,0 +1,28 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(55, 57, 59);
+    background-color: rgb(250, 253, 255);
+}
+
+.container {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.heading {
+    padding: 50px;
+    width: 100%;
+}
+
+input {
+    width: 170px;
+    margin: 10px;
+    border-radius: 7px;
+}
+
+button {
+    border-radius: 7px;
+    margin: 10px;
+}
