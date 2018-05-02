@@ -20,6 +20,16 @@ $(document).ready(function () {
     var startDateInput;
     var monthlyRateInput;
 
+    var table = $("#tableID");
+
+    function generateToTable() {
+        database.ref().on("child_added", function(snapshot)  {
+            var snap = snapshot.val();
+            table.append("<tr><td>" + snap.employeeName + "</td><td>" + snap.role + "</td><td>" + snap.startDate + "</td><td>" + snap.monthlyRate + "</td><td>" + snap.monthsWorked + "</td><td>" + snap.monthlyRate + "</td><td>" + snap.totalBill + "</td></tr>")
+        });
+    }
+    generateToTable();
+
 
     $("#buttonInput").on("click", function (e) {
         e.preventDefault();
@@ -38,13 +48,17 @@ $(document).ready(function () {
             employeeName: employeeNameInput,
             role: roleInput,
             startDate: startDateInput,
-            monthlyRate: monthlyRateInput
+            monthlyRate: monthlyRateInput,
+            monthsWorked: 10,
+            totalBill: 123456789,
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
         // Clears input fields
         $("#employeeNameInput").val("");
         $("#roleInput").val("");
         $("#startDateInput").val("");
         $("#monthlyRateInput").val("");
-
+        table.empty();
+        generateToTable();
     });
 });
