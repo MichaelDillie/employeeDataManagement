@@ -1,6 +1,4 @@
 $(document).ready(function () {
-    // Testing if JS and jQuery are linked
-    console.log("linked");
 
     // Initialize Firebase
     var config = {
@@ -19,16 +17,32 @@ $(document).ready(function () {
     var roleInput;
     var startDateInput;
     var monthlyRateInput;
+    var workedMonths;
 
     var table = $("#tableID");
+    var empty = $(".empty");
 
     function generateToTable() {
-        database.ref().on("child_added", function(snapshot)  {
+        database.ref().on("child_added", function (snapshot) {
             var snap = snapshot.val();
-            table.append("<tr><td>" + snap.employeeName + "</td><td>" + snap.role + "</td><td>" + snap.startDate + "</td><td>" + snap.monthlyRate + "</td><td>" + snap.monthsWorked + "</td><td>" + snap.monthlyRate + "</td><td>" + snap.totalBill + "</td></tr>")
+            console.log(workedMonths);
+            calcMonthsWorked(snap.startDate);
+            table.append("<tr class='empty'><td>" + snap.employeeName + "</td><td>" + snap.role + "</td><td>" + snap.startDate + "</td><td>" + "$" + snap.monthlyRate + "</td><td>" + snap.monthsWorked + "</td><td>" + "$" + snap.totalBill + "</td></tr>")
         });
     }
     generateToTable();
+
+    function calcMonthsWorked(inputDate) {
+        // start date is mm/dd/yy
+        // split date by -
+        var splitDate = inputDate.split("-", 3);
+        // console.log(splitDate);
+
+        // moment uses YEAR / month/ day
+        var monthsWorkedFunc = moment([splitDate[0], splitDate[1], splitDate[2]]).diff(moment(), 'months', true);
+
+        workedMonths = Math.floor(Math.abs(monthsWorkedFunc));
+    }
 
 
     $("#buttonInput").on("click", function (e) {
@@ -38,6 +52,10 @@ $(document).ready(function () {
         roleInput = $("#roleInput").val().trim();
         startDateInput = $("#startDateInput").val().trim();
         monthlyRateInput = $("#monthlyRateInput").val().trim();
+
+        calcMonthsWorked(startDateInput);
+
+        console.log(workedMonths);
 
         console.log(employeeNameInput);
         console.log(roleInput);
@@ -49,7 +67,7 @@ $(document).ready(function () {
             role: roleInput,
             startDate: startDateInput,
             monthlyRate: monthlyRateInput,
-            monthsWorked: 10,
+            monthsWorked: workedMonths,
             totalBill: 123456789,
             dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
