@@ -6,14 +6,33 @@ body {
 
 .container {
     width: 960px;
-    margin-left: auto;
-    margin-right: auto;
-
+    margin: auto;
+    margin-top: 20px;
 }
 
 .heading {
-    padding: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     width: 100%;
+    text-align: center;
+    color:  rgb(250, 253, 255);
+    background-color:  rgb(55, 57, 59);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+table {
+    width: 100%;
+    padding-top: 40px;
+    border-left: 3px solid rgb(55, 57, 59);
+    border-right: 3px solid rgb(55, 57, 59);
+}
+
+.formInput {
+    width: 99.35%;
+    padding-top: 40px;
+    border-left: 3px solid rgb(55, 57, 59);
+    border-right: 3px solid rgb(55, 57, 59);
 }
 
 input {
