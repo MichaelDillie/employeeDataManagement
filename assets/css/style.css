@@ -67,3 +67,15 @@ button {
     border-radius: 7px;
     margin: 10px;
 }
+
+footer {
+    margin-bottom: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color:  rgb(250, 253, 255);
+    background-color:  rgb(55, 57, 59);
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
